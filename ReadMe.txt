@@ -1,0 +1,1 @@
+cvLoad() will fail unless there is a reachable call to cvCvtColor()
