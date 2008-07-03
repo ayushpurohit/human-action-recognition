@@ -73,8 +73,10 @@ void OpticalFlow::Calculate(IplImage *frame)
 	cvCalcOpticalFlowLK(_gray1, _gray2, cvSize(3,3), _velx, _vely);
 	cvCvtColor( frame, _gray1, CV_BGR2GRAY );
 
+	/*
 	Smooth(_velx);
 	Smooth(_vely);
+	*/
 
 	cvPow(_velx, _velz, 2);
 	cvPow(_vely, _tmp, 2);
@@ -134,27 +136,26 @@ void OpticalFlow::Finalize()
 		cvAdd(_zFlow[i], _zSum, _zSum);
 	}
 
-	/*
+	
 	Smooth(_nSum);
 	Smooth(_eSum);
 	Smooth(_sSum);
 	Smooth(_wSum);
 	Smooth(_zSum);
-	*/
-
-	/*
+	
 	Normalize(_nSum);
 	Normalize(_eSum);
 	Normalize(_sSum);
 	Normalize(_wSum);
 	Normalize(_zSum);
-	*/
-
+	
+	/*
 	EqualizeHistogram(_nSum);
 	EqualizeHistogram(_eSum);
 	EqualizeHistogram(_sSum);
 	EqualizeHistogram(_wSum);
 	EqualizeHistogram(_zSum);
+	*/
 }
 
 void OpticalFlow::Write(ofstream &fout)
@@ -162,11 +163,14 @@ void OpticalFlow::Write(ofstream &fout)
 	for(int y=0; y<_velx->height; ++y)
 		for(int x=0; x<_velx->width; ++x)
 		{
+			//fout << " " << cvGetReal2D(_zSum, y, x);
+			
 			fout << " " << cvGetReal2D(_nSum, y, x) 
 				 << " " << cvGetReal2D(_eSum, y, x)
 				 << " " << cvGetReal2D(_sSum, y, x)
 				 << " " << cvGetReal2D(_wSum, y, x)
 				 << " " << cvGetReal2D(_zSum, y, x);
+			
 		}
 	fout << endl;
 }
@@ -176,29 +180,29 @@ double* OpticalFlow::GetData()
 	for(int y=0; y<_velx->height; ++y)
 		for(int x=0; x<_velx->width; ++x)
 		{
+			//_data[_velx->width*y + x] = cvGetReal2D(_zSum, y, x);
+			
 			_data[_velx->width*y*5 + x*5 + 0] = cvGetReal2D(_nSum, y, x);
 			_data[_velx->width*y*5 + x*5 + 1] = cvGetReal2D(_eSum, y, x);
 			_data[_velx->width*y*5 + x*5 + 2] = cvGetReal2D(_sSum, y, x);
 			_data[_velx->width*y*5 + x*5 + 3] = cvGetReal2D(_wSum, y, x);
 			_data[_velx->width*y*5 + x*5 + 4] = cvGetReal2D(_zSum, y, x);
+			
 		}
 	return _data;
 }
 
-void OpticalFlow::Align(CvRect face, IplImage *mask)
+void OpticalFlow::Align(CvPoint center, double radius, IplImage *mask)
 {
 	IplImage *canvasx, *canvasy, *canvasz;
 
-	CvPoint center = cvPoint(face.x + face.width/2, face.y + face.height/2);
 	if(center.x < 0) center.x = 0;
 	if(center.x > _velx->width) center.x = _velx->width;
 	if(center.y < 0) center.y = 0;
 	if(center.y > _velx->height) center.y = _velx->height;
 
-	int radius = (face.width+face.height)/2;
-
-	int canvas_width = max(_velx->width*2, radius * 16);
-	int canvas_height = max(_velx->height*2, radius * 12);
+	int canvas_width = max(_velx->width*2, radius * 32);
+	int canvas_height = max(_velx->height*2, radius * 24);
 
 	canvasx = cvCreateImage(cvSize(canvas_width, canvas_height), IPL_DEPTH_32F, 1);
 	canvasy = cvCreateImage(cvSize(canvas_width, canvas_height), IPL_DEPTH_32F, 1);
@@ -280,7 +284,7 @@ void OpticalFlow::EqualizeHistogram(IplImage *image)
 void OpticalFlow::Smooth(IplImage *image)
 {
 	int type = CV_GAUSSIAN;
-	int size = 3;
+	int size = 9;
 
 	cvSmooth(image, image, type, size, size);
 }
