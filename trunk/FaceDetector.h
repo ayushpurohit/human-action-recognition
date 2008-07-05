@@ -1,6 +1,7 @@
 #pragma once
 #include <cv.h>
 #include "CamShift.h"
+#define N_FRAMES_AVG	4
 
 class FaceDetector
 {
@@ -13,6 +14,7 @@ public:
 
 	CvRect rect;
 	CvPoint center;
+	double radius;
 private:
 	CvMemStorage* _storage;
 	CvHaarClassifierCascade* _cascade;
@@ -23,4 +25,8 @@ private:
 	CamShift _cs;
 	double _scale_factor;
 	int _min_neighbours, _flags;
+	double _radius[N_FRAMES_AVG];
+
+	void _UpdateLoc();
+	double _Dist(double x, double y);
 };

@@ -1,10 +1,12 @@
 /* TODO: 
  *	- Multithread FaceDetector, OpticalFlow, Background Subtraction (does not help??)
  *	- Experiment with normalization of optical flow on and off and histogram equalization
- *  - Experiment with setting ROI within small region around previous frame for face detection (and camshift?)
- *	- Try to reduce jitteryness of face detection
+ *  - ** Experiment with setting ROI within small region around previous frame for face detection (and camshift?)
  *	- Experiment with different values of gParams.n_gauss and smooth sizes on the foreground mask
  *  - Smooth _velx and _vely just before creating _velz
+ *	*** If it's normalized... there can be no large values to differentiate idle from....chicken or something ---
+ *		Normalize based on frame rate or something??? And RESOLUTION
+ *	- Draw optical flow to texture and stretch?
  */
 #include "stdafx.h"
 #include "FaceDetector.h"
@@ -23,7 +25,7 @@ void glInit(int width, int height)
 	glfwEnable( GLFW_STICKY_KEYS );
 	glfwSetWindowTitle("Human Action Recognition");
 	glViewport(0, 0, width, height);
-	glClearColor(0, 0, 0, 1);
+	glClearColor(.5, .5, .5, 1);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glMatrixMode(GL_PROJECTION);
@@ -73,7 +75,7 @@ int RealTimeTest()
 
 	// initialize face detector & optical flow
 	FaceDetector fd(cvSize(width,height), 1.5, 1.2, 2, CV_HAAR_DO_CANNY_PRUNING);
-	OpticalFlow of(cvSize(width,height));
+	OpticalFlow of(cvSize(width,height), cvSize(80,60));
 
 	// initialize background subtraction
 	gParams.win_size = 2;
@@ -88,7 +90,7 @@ int RealTimeTest()
 	vi.getPixels(device1, (unsigned char*)frame->imageData, false, true);
 	bg_model = cvCreateGaussianBGModel(frame, &gParams);
 
-	Classifier classifier("shyp/80x60bowl.xml");
+	Classifier classifier("shyp/bowl-5c-80x60.xml");
 
 	GLFont font;
 	if(!font.Create("glfont2/04b_03.glf",1))
@@ -111,8 +113,10 @@ int RealTimeTest()
 			// get frame from cam
 			vi.getPixels(device1, (unsigned char*)frame->imageData, false, true);
 			
+			
 			// detect & track face
 			fd.Detect(frame);
+			
 
 			// compute optical flow
 			of.Calculate(frame);
@@ -121,7 +125,7 @@ int RealTimeTest()
 			//cvUpdateBGStatModel(frame, bg_model);
 			//cvSmooth(bg_model->foreground, fgMask, CV_BLUR, 5, 5);
 
-			of.Align(fd.rect, NULL);
+			of.Align(fd.center, fd.radius, NULL);
 			of.Split();
 			
 			if(frameNum >= 15) // wait for background subtraction to settle, and for frames to sum
@@ -191,15 +195,16 @@ int WriteData(vector<string> files, ofstream &fout)
 	OpticalFlow of(cvSize(width,height), cvSize(80,60));
 
 	// initialize background subtraction
-	gParams.win_size = 2;
-	gParams.n_gauss = 5;
-	gParams.bg_threshold = 0.7;
-	gParams.std_threshold = 2.5;
-	gParams.minArea = 15;
-	gParams.weight_init = 0.05;
-	gParams.variance_init = 30;
+	gParams.win_size = 2;			// default: 2
+	gParams.n_gauss = 5;			// default: 5
+	gParams.bg_threshold = 0.7;		// default: 0.7
+	gParams.std_threshold = 7.5;	// default: 2.5
+	gParams.minArea = 15;			// default: 15
+	gParams.weight_init = 0.05;		// default: 0.05
+	gParams.variance_init = 30;		// default: 30
 
 	// initialize opengl/glfw
+	Texture tex(320,240);
 	glInit(80, 60);
 
 	for(int i=0; i<(int)files.size(); ++i)
@@ -220,17 +225,23 @@ int WriteData(vector<string> files, ofstream &fout)
 
 		for(int j=1; j<numFrames; ++j)
 		{
+			if(j>3)
+			{
+				if(glfwGetKey('N')==GLFW_PRESS) break;
+				if(glfwGetKey('B')==GLFW_PRESS && i>0) {
+					i-=2; break;
+				}
+			}
+
 			// compute fps
 			t1 = glfwGetTime();
 			if(t1 - t0 > 1) {
-				sprintf_s(windowTitle, "FPS: %.2f", (double)fpsFrames/(t1-t0));
+				sprintf_s(windowTitle, "%s - FPS: %.2f", label.c_str(), (double)fpsFrames/(t1-t0));
 				glfwSetWindowTitle(windowTitle);
 				fpsFrames = 0;
 				t0 = glfwGetTime();
 			}
 			++fpsFrames;
-
-			cout << "  Processing frame " << j+1 << " of " << numFrames << endl;
 			
 			// grab the next frame
 			frame = cvQueryFrame(capture);
@@ -241,23 +252,32 @@ int WriteData(vector<string> files, ofstream &fout)
 
 			// create foreground mask
 			cvUpdateBGStatModel(frame, bg_model); 
-			cvSmooth(bg_model->foreground, fgMask, CV_BLUR, 7, 7);
+			cvSmooth(bg_model->foreground, fgMask, CV_BLUR, 3, 3);
 
 			// compute optical flow
 			of.Calculate(frame);
-			of.Align(fd.rect, fgMask);
+			of.Align(fd.center, fd.radius, fgMask);
 			of.Split();
+
+			of.Finalize();
 			
-			if(j >= 15) // wait for background subtraction to settle, and for frames to sum
-			{
-				of.Finalize();
-				
+			if(j >= 20) // wait for background subtraction to settle, and for frames to sum
+			{				
 				fout << label;
 				of.Write(fout);
 
-				//of.Draw();
+				cout << "  Writing frame " << j+1 << " of " << numFrames << endl;
 			}
-			else glClear(GL_COLOR_BUFFER_BIT);
+			else {
+				cout << "  Processing frame " << j+1 << " of " << numFrames << endl;
+			}
+			
+			glClear(GL_COLOR_BUFFER_BIT);
+			of.Draw();
+			
+			//tex.Draw(0,0,80,60);
+			//DrawIplImage(frame);
+			//fd.Draw();
 			glfwSwapBuffers();
 		}
 
@@ -271,25 +291,32 @@ int WriteData(vector<string> files, ofstream &fout)
 	return EXIT_SUCCESS;
 }
 
-int _tmain(int argc, _TCHAR* argv[])
+void Train()
 {
 	vector<string> files;
 	ofstream fout;
 	string root;
-
+	
 	// train data
-	fout.open("eqhist_bowl");
-	root = "C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/";
-	files.push_back(root+"chicken02.avi");
-	files.push_back(root+"clap02.avi");
-	files.push_back(root+"punch-left02.avi");
-	files.push_back(root+"punch-right02.avi");
+	fout.open("data/temp");
+	root = "C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/bowl/";
 	files.push_back(root+"wave02.avi");
 	files.push_back(root+"wave-left02.avi");
+	files.push_back(root+"punch-right02.avi");
+	files.push_back("C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/test/mohammed/idle02.avi");
+	files.push_back("C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/brown/idle01.avi");
+	files.push_back(root+"chicken02.avi");
+	files.push_back(root+"clap02.avi");
+	files.push_back(root+"clap03.avi");
+	files.push_back(root+"punch-left02.avi");
+	files.push_back(root+"punch-left03.avi");
+	files.push_back(root+"punch-right03.avi");
+
 	files.push_back(root+"wave-right02.avi");
 	WriteData(files, fout);
 	fout.close();
 
+	/*
 	// test data
 	fout.open("eqhist_pj");
 	files.clear();
@@ -303,7 +330,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	files.push_back(root+"wave-right02.avi");
 	WriteData(files, fout);
 	fout.close();
+	*/
+}
 
-
-	//RealTimeTest();
+int _tmain(int argc, _TCHAR* argv[])
+{
+	//Train();
+	RealTimeTest();	
 }
