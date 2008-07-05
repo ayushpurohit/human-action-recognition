@@ -48,10 +48,7 @@ void CamShift::Track(IplImage *frame, CvRect &selection, bool calc_hist)
 		cvConvertScale( _hist->bins, _hist->bins, max_val ? 255. / max_val : 0., 0 );
 		cvResetImageROI( _hue );
 		cvResetImageROI( _mask );
-		//_track_window = selection; 
-		_track_window = cvRect(selection.x+selection.width*.3, selection.y+selection.height*.3,
-			selection.width*.4, selection.height*.4);
-
+		_track_window = selection; 
 	}
 
 	cvCalcBackProject( &_hue, _backproject, _hist );

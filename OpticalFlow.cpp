@@ -2,7 +2,7 @@
 #include <GL/glfw.h>
 #include <iostream>
 
-OpticalFlow::OpticalFlow(CvSize imgSize, CvSize outImageSize)
+OpticalFlow::OpticalFlow(CvSize imgSize, CvSize outImageSize) : _tex(outImageSize.width, outImageSize.height)
 {
 	_outImageSize = outImageSize;
 	_velx = 0;
@@ -106,6 +106,7 @@ void OpticalFlow::Draw()
 	else miny = 0.5;
 	*/
 
+	/*
 	glBegin(GL_POINTS);
 		for(int y=0; y<_velx->height; ++y)
 			for(int x=0; x<_velx->width; ++x)
@@ -117,6 +118,37 @@ void OpticalFlow::Draw()
 				glVertex2i(x,y);
 			}
 	glEnd();
+	*/
+	glBegin(GL_POINTS);
+		for(int y=0; y<_velx->height; ++y)
+			for(int x=0; x<_velx->width; ++x)
+			{
+				float vx = (float)cvGetReal2D(_nSum, y, x); // north = red
+				float vy = (float)cvGetReal2D(_eSum, y, x); // east = green
+				float vz = (float)cvGetReal2D(_zSum, y, x); // zero = blue
+				glColor3f(vx*0.5,vy*0.5,vz*0.5);
+				glVertex2i(x,y);
+			}
+	glEnd();
+}
+
+void OpticalFlow::Draw(int xoffset, int yoffset, int width, int height)
+{
+	unsigned char *data = 0;
+	data = new unsigned char[_velx->width*_velx->height*3];
+
+	
+	for(int y=0; y<_velx->height; ++y)
+		for(int x=0; x<_velx->width; ++x)
+		{
+			data[y*_velx->width*3+x*3] = (unsigned char)128;
+			data[y*_velx->width*3+x*3+1] = (unsigned char)255;
+			data[y*_velx->width*3+x*3+2] = (unsigned char)36;
+		}
+	
+	_tex.Load(data);
+	_tex.Draw(xoffset, yoffset, width, height);
+	delete []data;
 }
 
 void OpticalFlow::Finalize()
@@ -143,12 +175,14 @@ void OpticalFlow::Finalize()
 	Smooth(_wSum);
 	Smooth(_zSum);
 	
+	/*
 	Normalize(_nSum);
 	Normalize(_eSum);
 	Normalize(_sSum);
 	Normalize(_wSum);
 	Normalize(_zSum);
-	
+	*/
+
 	/*
 	EqualizeHistogram(_nSum);
 	EqualizeHistogram(_eSum);
@@ -227,9 +261,9 @@ void OpticalFlow::Align(CvPoint center, double radius, IplImage *mask)
 	cvReleaseImage(&_vely);
 	cvReleaseImage(&_velz);
 
-	cvSetImageROI(canvasx, cvRect(canvasx->width/2-radius*6, canvasx->height/2-radius*4.5, radius*12, radius*9));
-	cvSetImageROI(canvasy, cvRect(canvasx->width/2-radius*6, canvasx->height/2-radius*4.5, radius*12, radius*9));
-	cvSetImageROI(canvasz, cvRect(canvasx->width/2-radius*6, canvasx->height/2-radius*4.5, radius*12, radius*9));
+	cvSetImageROI(canvasx, cvRect(canvasx->width/2-radius*12, canvasx->height/2-radius*9, radius*24, radius*18));
+	cvSetImageROI(canvasy, cvRect(canvasx->width/2-radius*12, canvasx->height/2-radius*9, radius*24, radius*18));
+	cvSetImageROI(canvasz, cvRect(canvasx->width/2-radius*12, canvasx->height/2-radius*9, radius*24, radius*18));
 
 	_velx = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
 	_vely = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
@@ -246,6 +280,7 @@ void OpticalFlow::Align(CvPoint center, double radius, IplImage *mask)
 
 void OpticalFlow::Normalize(IplImage *image)
 {
+	/*
 	const double eps = 0.00000001;
 
 	double norm = cvNorm(image, NULL, CV_L2);
@@ -254,6 +289,14 @@ void OpticalFlow::Normalize(IplImage *image)
 	for(int row=0; row<image->height; ++row)
 		for(int col=0; col<image->width; ++col)
 			cvSetReal2D(image, row, col, cvGetReal2D(image, row, col) / norm);
+	*/
+	static double lastFrameTime = glfwGetTime();
+	double ratio = (glfwGetTime() - lastFrameTime)/66.66; // scale wrt time
+	lastFrameTime = glfwGetTime();
+
+	for(int row=0; row<image->height; ++row)
+		for(int col=0; col<image->width; ++col)
+			cvSetReal2D(image, row, col, cvGetReal2D(image, row, col) / ratio);
 }
 
 void OpticalFlow::EqualizeHistogram(IplImage *image)

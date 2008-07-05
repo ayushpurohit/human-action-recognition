@@ -15,6 +15,9 @@ FaceDetector::FaceDetector(CvSize imgSize, double scale, double scale_factor, in
 	_gsImg = cvCreateImage(cvSize(_imgSize.width/(int)_scale, _imgSize.height/(int)_scale), IPL_DEPTH_8U, 1);
 	rect = cvRect(imgSize.width/2-imgSize.width/10, imgSize.height/2-imgSize.height/8, 
 		imgSize.width/5, imgSize.height/4);
+
+	for(int i=0; i<4; ++i)
+		_radius[i] = 30;
 }
 
 FaceDetector::~FaceDetector(void)
@@ -22,6 +25,49 @@ FaceDetector::~FaceDetector(void)
 	cvReleaseMemStorage(&_storage);
 	cvReleaseImage(&_tmpImg);
 	cvReleaseImage(&_gsImg);
+}
+
+void FaceDetector::_UpdateLoc()
+{
+	static int ri = 0;
+	static CvPoint lastCenter;
+	static double lastRadius;
+	static bool firstRun = true;
+	static int count = 0;
+
+	_radius[ri++] = (rect.width+rect.height)/4.;
+	if(ri>=N_FRAMES_AVG) ri = 0;
+
+	radius = _radius[0];
+	for(int i=1; i<N_FRAMES_AVG; ++i)
+		radius += _radius[i];
+	radius /= (double)N_FRAMES_AVG;
+
+	center.x = rect.x+rect.width/2;
+	center.y = rect.y+rect.height/2;
+
+	// assert parameters are reasonable
+	if(center.x<0)center.x=0;												// your face must be in view
+	if(center.x>_tmpImg->width)center.x=_tmpImg->width;
+	if(center.y<0)center.y=0;
+	if(center.y>_tmpImg->height)center.y=_tmpImg->height;
+	if(radius<1)radius=1;
+	if(radius>_tmpImg->width/2) radius=_tmpImg->width/2;
+	if(	!firstRun															// if this is not the first frame
+		&& count < 3														// and the face detector is not stuck
+		&& (_Dist(center.x-lastCenter.x,center.y-lastCenter.y)>radius*2		// and (your face teleported
+		|| abs(radius-lastRadius)>lastRadius/1.5)) {						// or your face exploded)
+		center = lastCenter;
+		radius = lastRadius;
+		++count;
+	} else count = 0;
+	lastCenter = center;
+	lastRadius = radius;
+	firstRun = false;
+}
+
+double FaceDetector::_Dist(double x, double y) {
+	return sqrt(x*x+y*y);
 }
 
 void FaceDetector::Detect(IplImage *img)
@@ -49,16 +95,27 @@ void FaceDetector::Detect(IplImage *img)
 		_cs.Track(img, rect, calc_hist);
 		calc_hist = false;
 	}
+	_UpdateLoc();
 }
 
 void FaceDetector::Draw()
 {
+	
 	glColor3f(1,1,0);
 	glLineWidth(2);
+	/*
 	glBegin(GL_LINE_LOOP);
 		glVertex2i(rect.x, rect.y);
 		glVertex2i(rect.x + rect.width, rect.y);
 		glVertex2i(rect.x + rect.width, rect.y + rect.height);
 		glVertex2i(rect.x, rect.y + rect.height);
+	glEnd();
+	*/
+
+	static const double pi = 3.141592653589793238;
+
+	glBegin(GL_LINE_LOOP);
+	for(float i=0; i<2*pi; i+=pi/8)
+		glVertex2f(cos(i)*radius+center.x, sin(i)*radius+center.y);
 	glEnd();
 }
