@@ -90,7 +90,7 @@ int RealTimeTest()
 	vi.getPixels(device1, (unsigned char*)frame->imageData, false, true);
 	bg_model = cvCreateGaussianBGModel(frame, &gParams);
 
-	Classifier classifier("shyp/bowl-5c-80x60.xml");
+	Classifier classifier("shyp/bowl-hi_std_thresh-80x60.xml");
 
 	GLFont font;
 	if(!font.Create("glfont2/04b_03.glf",1))
@@ -298,20 +298,19 @@ void Train()
 	string root;
 	
 	// train data
-	fout.open("data/temp");
-	root = "C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/bowl/";
+	fout.open("data/bowl-80x60-normpeps");
+	root = "D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/bowl/";
 	files.push_back(root+"wave02.avi");
 	files.push_back(root+"wave-left02.avi");
 	files.push_back(root+"punch-right02.avi");
-	files.push_back("C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/test/mohammed/idle02.avi");
-	files.push_back("C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/brown/idle01.avi");
+	files.push_back("D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/test/mohammed/idle02.avi");
+	files.push_back("D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/brown/idle01.avi");
 	files.push_back(root+"chicken02.avi");
 	files.push_back(root+"clap02.avi");
 	files.push_back(root+"clap03.avi");
 	files.push_back(root+"punch-left02.avi");
 	files.push_back(root+"punch-left03.avi");
 	files.push_back(root+"punch-right03.avi");
-
 	files.push_back(root+"wave-right02.avi");
 	WriteData(files, fout);
 	fout.close();
@@ -335,6 +334,6 @@ void Train()
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//Train();
-	RealTimeTest();	
+	Train();
+	//RealTimeTest();	
 }
