@@ -1,0 +1,3219 @@
+<?xml version="1.0"?>
+<multiboost>
+	<algo>SingleStumpLearner</algo>
+	<weakhyp iter="0">
+		<alpha>0.611992</alpha>
+		<column>14269</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.000855712</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="1">
+		<alpha>0.453917</alpha>
+		<column>14536</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>7.30631e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="2">
+		<alpha>0.526865</alpha>
+		<column>9648</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>4.82415e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="3">
+		<alpha>0.508704</alpha>
+		<column>19387</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>5.19148e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="4">
+		<alpha>0.465229</alpha>
+		<column>14597</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.22843e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="5">
+		<alpha>0.455351</alpha>
+		<column>17808</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000153544</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="6">
+		<alpha>0.394502</alpha>
+		<column>15358</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.181776</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="7">
+		<alpha>0.4453</alpha>
+		<column>18686</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>3.34015e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="8">
+		<alpha>0.385503</alpha>
+		<column>19826</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>5.11355e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="9">
+		<alpha>0.378865</alpha>
+		<column>14223</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>7.68333e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="10">
+		<alpha>0.337614</alpha>
+		<column>16354</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>-1.39778e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="11">
+		<alpha>0.425441</alpha>
+		<column>16186</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.000325271</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="12">
+		<alpha>0.377219</alpha>
+		<column>18989</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>6.85964e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="13">
+		<alpha>0.357705</alpha>
+		<column>16539</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0042032</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="14">
+		<alpha>0.322352</alpha>
+		<column>14269</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.000171823</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="15">
+		<alpha>0.407018</alpha>
+		<column>15394</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>-8.21116e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="16">
+		<alpha>0.400238</alpha>
+		<column>11917</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>1.80989e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="17">
+		<alpha>0.355078</alpha>
+		<column>15094</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00861293</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="18">
+		<alpha>0.301219</alpha>
+		<column>15347</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0126358</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="19">
+		<alpha>0.322136</alpha>
+		<column>9144</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000153</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="20">
+		<alpha>0.363075</alpha>
+		<column>11719</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>4.37797e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="21">
+		<alpha>0.326583</alpha>
+		<column>17772</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.0383309</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="22">
+		<alpha>0.376874</alpha>
+		<column>16934</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>9.31773e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="23">
+		<alpha>0.346062</alpha>
+		<column>15389</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>-9.35209e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="24">
+		<alpha>0.406306</alpha>
+		<column>13874</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.66164e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="25">
+		<alpha>0.319829</alpha>
+		<column>12962</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0213642</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="26">
+		<alpha>0.296479</alpha>
+		<column>17454</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0179638</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="27">
+		<alpha>0.296441</alpha>
+		<column>15792</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>1.61796e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="28">
+		<alpha>0.310671</alpha>
+		<column>15838</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.012086</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="29">
+		<alpha>0.304436</alpha>
+		<column>17383</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>9.54133e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="30">
+		<alpha>0.316148</alpha>
+		<column>15369</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>-1.66605e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="31">
+		<alpha>0.319478</alpha>
+		<column>18207</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>8.18143e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="32">
+		<alpha>0.281613</alpha>
+		<column>17731</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00221183</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="33">
+		<alpha>0.317184</alpha>
+		<column>14969</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00450798</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="34">
+		<alpha>0.274235</alpha>
+		<column>14940</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0244811</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="35">
+		<alpha>0.320558</alpha>
+		<column>17490</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00271464</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="36">
+		<alpha>0.336472</alpha>
+		<column>14263</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>5.38834e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="37">
+		<alpha>0.311926</alpha>
+		<column>19434</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>8.20782e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="38">
+		<alpha>0.342747</alpha>
+		<column>13938</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0020144</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="39">
+		<alpha>0.30998</alpha>
+		<column>18194</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00848354</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="40">
+		<alpha>0.303819</alpha>
+		<column>17859</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00363835</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="41">
+		<alpha>0.271465</alpha>
+		<column>15745</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000923172</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="42">
+		<alpha>0.278942</alpha>
+		<column>14984</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00394834</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="43">
+		<alpha>0.296227</alpha>
+		<column>10700</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>9.52155e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="44">
+		<alpha>0.297201</alpha>
+		<column>15081</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.0498665</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="45">
+		<alpha>0.300787</alpha>
+		<column>14263</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00162531</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="46">
+		<alpha>0.278269</alpha>
+		<column>11729</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>1.73071e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="47">
+		<alpha>0.324859</alpha>
+		<column>17059</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0700369</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="48">
+		<alpha>0.269008</alpha>
+		<column>13739</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>4.216e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="49">
+		<alpha>0.310641</alpha>
+		<column>21353</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>7.1636e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="50">
+		<alpha>0.255236</alpha>
+		<column>19825</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00162255</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="51">
+		<alpha>0.26792</alpha>
+		<column>15012</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>7.50208e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="52">
+		<alpha>0.244582</alpha>
+		<column>15394</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>-4.69413e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="53">
+		<alpha>0.324628</alpha>
+		<column>14281</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>3.87647e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="54">
+		<alpha>0.264145</alpha>
+		<column>16164</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>7.79645e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="55">
+		<alpha>0.251331</alpha>
+		<column>18285</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000646361</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="56">
+		<alpha>0.298365</alpha>
+		<column>15382</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>9.897e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="57">
+		<alpha>0.259403</alpha>
+		<column>14940</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0318263</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="58">
+		<alpha>0.260112</alpha>
+		<column>18171</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.0176173</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="59">
+		<alpha>0.255345</alpha>
+		<column>10277</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>7.01656e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="60">
+		<alpha>0.289676</alpha>
+		<column>17416</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.000333323</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="61">
+		<alpha>0.241852</alpha>
+		<column>18595</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00771194</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="62">
+		<alpha>0.248233</alpha>
+		<column>15012</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>7.89605e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="63">
+		<alpha>0.24931</alpha>
+		<column>19467</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0733299</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="64">
+		<alpha>0.305971</alpha>
+		<column>17838</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.88885e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="65">
+		<alpha>0.256303</alpha>
+		<column>17375</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00290924</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="66">
+		<alpha>0.223212</alpha>
+		<column>10586</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0110884</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="67">
+		<alpha>0.287218</alpha>
+		<column>14272</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>4.5999e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="68">
+		<alpha>0.239999</alpha>
+		<column>19774</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0738125</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="69">
+		<alpha>0.2969</alpha>
+		<column>12117</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>1.07338e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="70">
+		<alpha>0.262938</alpha>
+		<column>16699</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00901117</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="71">
+		<alpha>0.240712</alpha>
+		<column>20207</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>9.89401e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="72">
+		<alpha>0.219962</alpha>
+		<column>15015</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000346163</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="73">
+		<alpha>0.208754</alpha>
+		<column>15867</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.13548e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="74">
+		<alpha>0.210695</alpha>
+		<column>14589</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.000741744</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="75">
+		<alpha>0.247538</alpha>
+		<column>15738</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>1.47995e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="76">
+		<alpha>0.251817</alpha>
+		<column>16659</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0571393</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="77">
+		<alpha>0.254248</alpha>
+		<column>17739</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00232071</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="78">
+		<alpha>0.217901</alpha>
+		<column>18160</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00230205</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="79">
+		<alpha>0.213906</alpha>
+		<column>15393</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>6.391e-010</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="80">
+		<alpha>0.206346</alpha>
+		<column>17413</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.45117e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="81">
+		<alpha>0.239564</alpha>
+		<column>13364</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0652907</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="82">
+		<alpha>0.191565</alpha>
+		<column>10901</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00238459</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="83">
+		<alpha>0.234644</alpha>
+		<column>13887</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00204044</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="84">
+		<alpha>0.183614</alpha>
+		<column>14338</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00186858</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="85">
+		<alpha>0.216724</alpha>
+		<column>19435</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.84696e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="86">
+		<alpha>0.1924</alpha>
+		<column>15832</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.000378713</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="87">
+		<alpha>0.206794</alpha>
+		<column>19404</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000104766</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="88">
+		<alpha>0.185475</alpha>
+		<column>13880</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0476299</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="89">
+		<alpha>0.224514</alpha>
+		<column>14282</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>7.40245e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="90">
+		<alpha>0.192786</alpha>
+		<column>17047</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.125263</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="91">
+		<alpha>0.205592</alpha>
+		<column>13344</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>1.12495e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="92">
+		<alpha>0.162728</alpha>
+		<column>15394</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.28349e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="93">
+		<alpha>0.215262</alpha>
+		<column>15743</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00010065</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="94">
+		<alpha>0.198056</alpha>
+		<column>16223</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00588425</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="95">
+		<alpha>0.208728</alpha>
+		<column>14285</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00573633</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="96">
+		<alpha>0.169884</alpha>
+		<column>13519</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00472067</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="97">
+		<alpha>0.185694</alpha>
+		<column>19739</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>1.18227e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="98">
+		<alpha>0.169699</alpha>
+		<column>12959</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.270408</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="99">
+		<alpha>0.199254</alpha>
+		<column>14671</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>4.8478e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="100">
+		<alpha>0.180534</alpha>
+		<column>15494</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00316247</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="101">
+		<alpha>0.178328</alpha>
+		<column>15053</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00568047</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="102">
+		<alpha>0.177568</alpha>
+		<column>17764</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.073346</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="103">
+		<alpha>0.167787</alpha>
+		<column>19768</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.65623e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="104">
+		<alpha>0.163721</alpha>
+		<column>17454</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.024625</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="105">
+		<alpha>0.172357</alpha>
+		<column>18287</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00110137</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="106">
+		<alpha>0.160975</alpha>
+		<column>10700</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>7.93555e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="107">
+		<alpha>0.164834</alpha>
+		<column>10109</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00342877</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="108">
+		<alpha>0.156049</alpha>
+		<column>16190</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000308411</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="109">
+		<alpha>0.139361</alpha>
+		<column>16161</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.0647616</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="110">
+		<alpha>0.197018</alpha>
+		<column>16573</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>6.2724e-009</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="111">
+		<alpha>0.158557</alpha>
+		<column>15389</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.000565093</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="112">
+		<alpha>0.183185</alpha>
+		<column>16530</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00198513</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="113">
+		<alpha>0.142659</alpha>
+		<column>20267</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.72795e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="114">
+		<alpha>0.161349</alpha>
+		<column>16657</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0557932</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="115">
+		<alpha>0.153277</alpha>
+		<column>11723</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>4.0858e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="116">
+		<alpha>0.15567</alpha>
+		<column>13730</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>2.04867e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="117">
+		<alpha>0.143569</alpha>
+		<column>16594</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>-2.38783e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="118">
+		<alpha>0.161662</alpha>
+		<column>15801</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>9.51502e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="119">
+		<alpha>0.143972</alpha>
+		<column>19373</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00119429</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="120">
+		<alpha>0.148752</alpha>
+		<column>20214</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000375322</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="121">
+		<alpha>0.13957</alpha>
+		<column>15757</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.0152982</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="122">
+		<alpha>0.13705</alpha>
+		<column>18963</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>3.76387e-009</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="123">
+		<alpha>0.138813</alpha>
+		<column>8629</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>7.12715e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="124">
+		<alpha>0.149242</alpha>
+		<column>20222</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>8.56264e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="125">
+		<alpha>0.13981</alpha>
+		<column>21748</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0148324</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="126">
+		<alpha>0.159285</alpha>
+		<column>14272</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>5.92568e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="127">
+		<alpha>0.141748</alpha>
+		<column>18235</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0295079</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="128">
+		<alpha>0.135971</alpha>
+		<column>15740</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000865097</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="129">
+		<alpha>0.132438</alpha>
+		<column>11719</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>4.37797e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="130">
+		<alpha>0.139146</alpha>
+		<column>16197</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000687047</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="131">
+		<alpha>0.124081</alpha>
+		<column>18274</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00014953</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="132">
+		<alpha>0.145558</alpha>
+		<column>10285</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00223628</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="133">
+		<alpha>0.133232</alpha>
+		<column>16262</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.67362e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="134">
+		<alpha>0.119668</alpha>
+		<column>14585</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.000597851</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="135">
+		<alpha>0.132169</alpha>
+		<column>15399</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>-2.27283e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="136">
+		<alpha>0.130806</alpha>
+		<column>17408</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.000513234</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="137">
+		<alpha>0.12998</alpha>
+		<column>13735</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000441834</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="138">
+		<alpha>0.119404</alpha>
+		<column>15858</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0143609</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="139">
+		<alpha>0.130381</alpha>
+		<column>16590</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>6.00083e-009</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="140">
+		<alpha>0.115849</alpha>
+		<column>17389</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0450332</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="141">
+		<alpha>0.129969</alpha>
+		<column>18693</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>3.08695e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="142">
+		<alpha>0.115326</alpha>
+		<column>13418</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00016696</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="143">
+		<alpha>0.118144</alpha>
+		<column>13868</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.0012908</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="144">
+		<alpha>0.121377</alpha>
+		<column>23739</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>7.39581e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="145">
+		<alpha>0.116161</alpha>
+		<column>18188</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>1.4796e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="146">
+		<alpha>0.102312</alpha>
+		<column>15833</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0033102</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="147">
+		<alpha>0.106032</alpha>
+		<column>17435</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>1.8674e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="148">
+		<alpha>0.105224</alpha>
+		<column>17049</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0142843</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="149">
+		<alpha>0.10699</alpha>
+		<column>18568</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.0355752</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="150">
+		<alpha>0.124431</alpha>
+		<column>19001</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000337144</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="151">
+		<alpha>0.117243</alpha>
+		<column>18520</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.000597909</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="152">
+		<alpha>0.113544</alpha>
+		<column>16164</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>7.79645e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="153">
+		<alpha>0.106782</alpha>
+		<column>14277</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>8.08216e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="154">
+		<alpha>0.10733</alpha>
+		<column>16699</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0114345</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="155">
+		<alpha>0.108045</alpha>
+		<column>11724</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>5.64689e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="156">
+		<alpha>0.103041</alpha>
+		<column>15387</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>6.69582e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="157">
+		<alpha>0.113184</alpha>
+		<column>16544</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.012302</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="158">
+		<alpha>0.100836</alpha>
+		<column>20936</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>1.37841e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="159">
+		<alpha>0.0966763</alpha>
+		<column>14264</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00344796</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="160">
+		<alpha>0.0952619</alpha>
+		<column>16179</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0542977</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="161">
+		<alpha>0.0957546</alpha>
+		<column>17735</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>3.40679e-009</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="162">
+		<alpha>0.0914881</alpha>
+		<column>12618</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.91027e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="163">
+		<alpha>0.0988444</alpha>
+		<column>13359</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0503458</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="164">
+		<alpha>0.100314</alpha>
+		<column>15379</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.0112231</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="165">
+		<alpha>0.0978772</alpha>
+		<column>18179</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>1.26173e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="166">
+		<alpha>0.0953262</alpha>
+		<column>13880</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0476299</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="167">
+		<alpha>0.0971418</alpha>
+		<column>14256</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>4.60384e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="168">
+		<alpha>0.0902161</alpha>
+		<column>18285</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000744778</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="169">
+		<alpha>0.0932812</alpha>
+		<column>10700</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>7.93555e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="170">
+		<alpha>0.0880197</alpha>
+		<column>13931</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00318719</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="171">
+		<alpha>0.0920277</alpha>
+		<column>11728</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.000125149</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="172">
+		<alpha>0.0891836</alpha>
+		<column>16224</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00122259</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="173">
+		<alpha>0.0894606</alpha>
+		<column>19835</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00068998</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="174">
+		<alpha>0.0858811</alpha>
+		<column>19872</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>6.72182e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="175">
+		<alpha>0.0831218</alpha>
+		<column>18172</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.0143895</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="176">
+		<alpha>0.0927754</alpha>
+		<column>14145</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000429348</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="177">
+		<alpha>0.0831249</alpha>
+		<column>12187</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>5.95327e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="178">
+		<alpha>0.0839483</alpha>
+		<column>17455</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.09907</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="179">
+		<alpha>0.0849918</alpha>
+		<column>22550</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.04109e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="180">
+		<alpha>0.0812837</alpha>
+		<column>13872</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00462631</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="181">
+		<alpha>0.0840169</alpha>
+		<column>14616</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>4.37905e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="182">
+		<alpha>0.0839745</alpha>
+		<column>19000</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.000585923</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="183">
+		<alpha>0.080521</alpha>
+		<column>16179</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00318881</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="184">
+		<alpha>0.0795733</alpha>
+		<column>15745</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00143026</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="185">
+		<alpha>0.0807428</alpha>
+		<column>15794</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>-3.01024e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="186">
+		<alpha>0.0790098</alpha>
+		<column>17859</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00399344</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="187">
+		<alpha>0.0735064</alpha>
+		<column>15368</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>7.41437e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="188">
+		<alpha>0.0774618</alpha>
+		<column>17359</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.20917</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="189">
+		<alpha>0.0831925</alpha>
+		<column>14271</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>1.13983e-007</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="190">
+		<alpha>0.0792129</alpha>
+		<column>23777</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>2.57735e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="191">
+		<alpha>0.0763585</alpha>
+		<column>20590</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.71404e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="192">
+		<alpha>0.0732011</alpha>
+		<column>17411</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>2.29205e-008</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="193">
+		<alpha>0.0770505</alpha>
+		<column>12930</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>2.76898e-006</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="194">
+		<alpha>0.0733999</alpha>
+		<column>11894</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0559106</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="195">
+		<alpha>0.0739909</alpha>
+		<column>15448</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.00163259</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="196">
+		<alpha>0.0711253</alpha>
+		<column>11280</column>
+		<vArray size="8">
+			<class id="wave">-1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>0.0019575</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="197">
+		<alpha>0.0728714</alpha>
+		<column>18579</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00196563</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="198">
+		<alpha>0.0703775</alpha>
+		<column>18280</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">1</class>
+			<class id="idle">1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.00382137</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="199">
+		<alpha>0.0713385</alpha>
+		<column>14302</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">-1</class>
+			<class id="chicken">-1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">-1</class>
+			<class id="wave-right">-1</class>
+		</vArray>
+		<threshold>1.41154e-005</threshold>
+	</weakhyp>
+	<!-- ################################## -->
+	<weakhyp iter="200">
+		<alpha>0.0690833</alpha>
+		<column>17830</column>
+		<vArray size="8">
+			<class id="wave">1</class>
+			<class id="wave-left">-1</class>
+			<class id="punch-right">-1</class>
+			<class id="idle">1</class>
+			<class id="chicken">1</class>
+			<class id="clap">-1</class>
+			<class id="punch-left">1</class>
+			<class id="wave-right">1</class>
+		</vArray>
+		<threshold>0.0146003</threshold>
+	</weakhyp>
+	<!-- ################################## -->

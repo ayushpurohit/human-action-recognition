@@ -126,7 +126,8 @@ void OpticalFlow::Draw()
 				float vx = (float)cvGetReal2D(_nSum, y, x); // north = red
 				float vy = (float)cvGetReal2D(_eSum, y, x); // east = green
 				float vz = (float)cvGetReal2D(_zSum, y, x); // zero = blue
-				glColor3f(vx*0.5,vy*0.5,vz*0.5);
+				//glColor3f(vx*0.5,vy*0.5,vz*0.5);
+				glColor3f(vx*45.,vy*45.,vz*45.);
 				glVertex2i(x,y);
 			}
 	glEnd();
@@ -175,13 +176,13 @@ void OpticalFlow::Finalize()
 	Smooth(_wSum);
 	Smooth(_zSum);
 	
-	/*
+	
 	Normalize(_nSum);
 	Normalize(_eSum);
 	Normalize(_sSum);
 	Normalize(_wSum);
 	Normalize(_zSum);
-	*/
+	
 
 	/*
 	EqualizeHistogram(_nSum);
@@ -280,16 +281,20 @@ void OpticalFlow::Align(CvPoint center, double radius, IplImage *mask)
 
 void OpticalFlow::Normalize(IplImage *image)
 {
-	/*
-	const double eps = 0.00000001;
+	
+	
+	//const double eps = 0.00000001;
 
 	double norm = cvNorm(image, NULL, CV_L2);
-	if(norm < eps) norm = eps;
+	//if(norm < eps) norm = eps;
+	norm += 0.5;
 
 	for(int row=0; row<image->height; ++row)
 		for(int col=0; col<image->width; ++col)
 			cvSetReal2D(image, row, col, cvGetReal2D(image, row, col) / norm);
-	*/
+	
+	
+	/*
 	static double lastFrameTime = glfwGetTime();
 	double ratio = (glfwGetTime() - lastFrameTime)/66.66; // scale wrt time
 	lastFrameTime = glfwGetTime();
@@ -297,6 +302,7 @@ void OpticalFlow::Normalize(IplImage *image)
 	for(int row=0; row<image->height; ++row)
 		for(int col=0; col<image->width; ++col)
 			cvSetReal2D(image, row, col, cvGetReal2D(image, row, col) / ratio);
+	*/
 }
 
 void OpticalFlow::EqualizeHistogram(IplImage *image)
