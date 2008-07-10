@@ -7,6 +7,7 @@
  *	*** If it's normalized... there can be no large values to differentiate idle from....chicken or something ---
  *		Normalize based on frame rate or something??? And RESOLUTION
  *	- Draw optical flow to texture and stretch?
+ *  - Use meanshift whenever possible, only use face detection to re-align
  */
 #include "stdafx.h"
 #include "FaceDetector.h"
@@ -71,7 +72,7 @@ int RealTimeTest()
 	fgMask = cvCreateImage(cvSize(width, height), IPL_DEPTH_8U, 1);
 
 	// initialize opengl/glfw
-	glInit(width, height);
+	glInit(320, 240);
 
 	// initialize face detector & optical flow
 	FaceDetector fd(cvSize(width,height), 1.5, 1.2, 2, CV_HAAR_DO_CANNY_PRUNING);
@@ -90,7 +91,7 @@ int RealTimeTest()
 	vi.getPixels(device1, (unsigned char*)frame->imageData, false, true);
 	bg_model = cvCreateGaussianBGModel(frame, &gParams);
 
-	Classifier classifier("shyp/bowl-hi_std_thresh-80x60.xml");
+	Classifier classifier("shyp/bowl-80x60-small_blur-2.xml");
 
 	GLFont font;
 	if(!font.Create("glfont2/04b_03.glf",1))
@@ -136,6 +137,7 @@ int RealTimeTest()
 			
 			// draw
 			glClear(GL_COLOR_BUFFER_BIT);
+			
 			DrawIplImage(frame);
 			fd.Draw();
 			
@@ -158,9 +160,10 @@ int RealTimeTest()
 					font.DrawString(itr->first, i*w, height);
 				font.End();
 			}
-
+			
+			//of.Draw();
 			glfwSwapBuffers();
-
+			
 			++frameNum;
 		}
 	}
@@ -198,7 +201,7 @@ int WriteData(vector<string> files, ofstream &fout)
 	gParams.win_size = 2;			// default: 2
 	gParams.n_gauss = 5;			// default: 5
 	gParams.bg_threshold = 0.7;		// default: 0.7
-	gParams.std_threshold = 7.5;	// default: 2.5
+	gParams.std_threshold = 3.5;	// default: 2.5
 	gParams.minArea = 15;			// default: 15
 	gParams.weight_init = 0.05;		// default: 0.05
 	gParams.variance_init = 30;		// default: 30
@@ -252,7 +255,7 @@ int WriteData(vector<string> files, ofstream &fout)
 
 			// create foreground mask
 			cvUpdateBGStatModel(frame, bg_model); 
-			cvSmooth(bg_model->foreground, fgMask, CV_BLUR, 3, 3);
+			cvSmooth(bg_model->foreground, fgMask, CV_BLUR, 7, 7);
 
 			// compute optical flow
 			of.Calculate(frame);
@@ -298,19 +301,19 @@ void Train()
 	string root;
 	
 	// train data
-	fout.open("data/bowl-80x60-normpeps");
-	root = "D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/bowl/";
+	fout.open("data/bowl-80x60-small_blur");
+	root = "C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/bowl/";
 	files.push_back(root+"wave02.avi");
 	files.push_back(root+"wave-left02.avi");
 	files.push_back(root+"punch-right02.avi");
-	files.push_back("D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/test/mohammed/idle02.avi");
-	files.push_back("D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/brown/idle01.avi");
+	//files.push_back("C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/test/mohammed/idle02.avi");
+	//files.push_back("C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/brown/idle01.avi");
 	files.push_back(root+"chicken02.avi");
 	files.push_back(root+"clap02.avi");
-	files.push_back(root+"clap03.avi");
+	//files.push_back(root+"clap03.avi");
 	files.push_back(root+"punch-left02.avi");
-	files.push_back(root+"punch-left03.avi");
-	files.push_back(root+"punch-right03.avi");
+	//files.push_back(root+"punch-left03.avi");
+	//files.push_back(root+"punch-right03.avi");
 	files.push_back(root+"wave-right02.avi");
 	WriteData(files, fout);
 	fout.close();
@@ -334,6 +337,6 @@ void Train()
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	Train();
-	//RealTimeTest();	
+	//Train();
+	RealTimeTest();	
 }

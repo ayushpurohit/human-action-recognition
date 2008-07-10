@@ -126,7 +126,7 @@ void OpticalFlow::Draw()
 				float vx = (float)cvGetReal2D(_nSum, y, x); // north = red
 				float vy = (float)cvGetReal2D(_eSum, y, x); // east = green
 				float vz = (float)cvGetReal2D(_zSum, y, x); // zero = blue
-				//glColor3f(vx*0.5,vy*0.5,vz*0.5);
+				//glColor3f(vx*0.00001,vy*0.00001,vz*0.00001);
 				glColor3f(vx*45.,vy*45.,vz*45.);
 				glVertex2i(x,y);
 			}
@@ -207,7 +207,7 @@ void OpticalFlow::Write(ofstream &fout)
 				 << " " << cvGetReal2D(_zSum, y, x);
 			
 		}
-	fout << endl;
+	fout << "\r\n"; // endl
 }
 
 double* OpticalFlow::GetData()
@@ -283,15 +283,17 @@ void OpticalFlow::Normalize(IplImage *image)
 {
 	
 	
+	
 	//const double eps = 0.00000001;
 
 	double norm = cvNorm(image, NULL, CV_L2);
+	//cout << norm << endl;
 	//if(norm < eps) norm = eps;
-	norm += 0.5;
+	norm += 0.0005;
 
 	for(int row=0; row<image->height; ++row)
 		for(int col=0; col<image->width; ++col)
-			cvSetReal2D(image, row, col, cvGetReal2D(image, row, col) / norm);
+			cvSetReal2D(image, row, col, cvGetReal2D(image, row, col) / norm); // LOG?!
 	
 	
 	/*
@@ -333,7 +335,7 @@ void OpticalFlow::EqualizeHistogram(IplImage *image)
 void OpticalFlow::Smooth(IplImage *image)
 {
 	int type = CV_GAUSSIAN;
-	int size = 9;
+	int size = 5;
 
 	cvSmooth(image, image, type, size, size);
 }
