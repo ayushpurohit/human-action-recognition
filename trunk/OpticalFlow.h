@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Texture.h"
-#define N_FRAMES_SUM 10
+#define N_FRAMES_SUM 7
 
 class OpticalFlow
 {
