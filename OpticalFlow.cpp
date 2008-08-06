@@ -207,7 +207,7 @@ void OpticalFlow::Write(ofstream &fout)
 				 << " " << cvGetReal2D(_zSum, y, x);
 			
 		}
-	fout << "\r\n"; // endl
+	fout << endl;
 }
 
 double* OpticalFlow::GetData()

@@ -91,7 +91,7 @@ int RealTimeTest()
 	vi.getPixels(device1, (unsigned char*)frame->imageData, false, true);
 	bg_model = cvCreateGaussianBGModel(frame, &gParams);
 
-	Classifier classifier("shyp/bowl-80x60-small_blur-2.xml");
+	Classifier classifier("shyp/friends-bg4.5.xml");//bowl-80x60-small_blur-3.xml
 
 	GLFont font;
 	if(!font.Create("glfont2/04b_03.glf",1))
@@ -201,7 +201,7 @@ int WriteData(vector<string> files, ofstream &fout)
 	gParams.win_size = 2;			// default: 2
 	gParams.n_gauss = 5;			// default: 5
 	gParams.bg_threshold = 0.7;		// default: 0.7
-	gParams.std_threshold = 3.5;	// default: 2.5
+	gParams.std_threshold = 5.5;	// default: 2.5
 	gParams.minArea = 15;			// default: 15
 	gParams.weight_init = 0.05;		// default: 0.05
 	gParams.variance_init = 30;		// default: 30
@@ -301,38 +301,39 @@ void Train()
 	string root;
 	
 	// train data
-	fout.open("data/bowl-80x60-small_blur");
-	root = "C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/bowl/";
-	files.push_back(root+"wave02.avi");
-	files.push_back(root+"wave-left02.avi");
-	files.push_back(root+"punch-right02.avi");
-	//files.push_back("C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/test/mohammed/idle02.avi");
-	//files.push_back("C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/brown/idle01.avi");
-	files.push_back(root+"chicken02.avi");
-	files.push_back(root+"clap02.avi");
-	//files.push_back(root+"clap03.avi");
-	files.push_back(root+"punch-left02.avi");
-	//files.push_back(root+"punch-left03.avi");
-	//files.push_back(root+"punch-right03.avi");
-	files.push_back(root+"wave-right02.avi");
+	fout.open("data/friends-bg5.5b");
+	root = "C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/";
+	files.push_back(root+"mark/wave.avi");
+	files.push_back(root+"mark/wave-left.avi");
+	files.push_back(root+"mark/wave-right.avi");
+	files.push_back(root+"mark/punch-left.avi");
+	files.push_back(root+"mark/punch-right.avi");
+	files.push_back(root+"mark/chicken.avi");
+	files.push_back(root+"andy/wave.avi");
+	files.push_back(root+"andy/wave-left.avi");
+	files.push_back(root+"andy/wave-right.avi");
+	files.push_back(root+"andy/punch-left.avi");
+	files.push_back(root+"andy/punch-right.avi");
+	files.push_back(root+"andy/chicken.avi");
+	files.push_back(root+"andy/stand.avi");
+	files.push_back(root+"andrew/wave.avi");
+	files.push_back(root+"andrew/wave-left.avi");
+	files.push_back(root+"andrew/wave-right.avi");
+	files.push_back(root+"andrew/punch-left.avi");
+	files.push_back(root+"andrew/punch-right.avi");
+	//files.push_back(root+"andrew/chicken.avi"); // not enough movement?
+	files.push_back(root+"andrew/stand.avi");
+	files.push_back(root+"andrew/seizure.avi");
+	files.push_back(root+"andrew/monkey.avi");
+	files.push_back(root+"nick/wave.avi");
+	files.push_back(root+"nick/wave-left.avi");
+	files.push_back(root+"nick/wave-right.avi");
+	files.push_back(root+"nick/punch-left.avi");
+	files.push_back(root+"nick/punch-right.avi");
+	files.push_back(root+"nick/chicken.avi");
+	files.push_back(root+"nick/stand.avi");
 	WriteData(files, fout);
 	fout.close();
-
-	/*
-	// test data
-	fout.open("eqhist_pj");
-	files.clear();
-	root = "C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA2/";
-	files.push_back(root+"clap02.avi");
-	files.push_back(root+"punch-left02.avi");
-	files.push_back(root+"punch-right01.avi");
-	files.push_back(root+"chicken02.avi");
-	files.push_back(root+"wave02.avi");
-	files.push_back(root+"wave-left02.avi");
-	files.push_back(root+"wave-right02.avi");
-	WriteData(files, fout);
-	fout.close();
-	*/
 }
 
 int _tmain(int argc, _TCHAR* argv[])
