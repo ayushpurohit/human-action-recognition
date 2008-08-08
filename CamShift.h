@@ -4,7 +4,7 @@
 class CamShift
 {
 public:
-	CamShift(CvSize imgSize);
+	CamShift(CvSize frameSize);
 	~CamShift(void);
 	void Track(IplImage *frame, CvRect &selection, bool calc_hist);
 private:

@@ -2,8 +2,8 @@
 #include "stdafx.h"
 #include <gl/gl.h>
 
-FaceDetector::FaceDetector(CvSize imgSize, double scale, double scale_factor, int min_neighbours, int flags) 
-	: _imgSize(imgSize), _scale(scale), _cs(imgSize), _scale_factor(scale_factor), _min_neighbours(min_neighbours),
+FaceDetector::FaceDetector(CvSize frameSize, double scale, double scale_factor, int min_neighbours, int flags) 
+	: _frameSize(frameSize), _scale(scale), _cs(frameSize), _scale_factor(scale_factor), _min_neighbours(min_neighbours),
 	_flags(flags)
 {
 	_storage = cvCreateMemStorage(0);
@@ -11,10 +11,10 @@ FaceDetector::FaceDetector(CvSize imgSize, double scale, double scale_factor, in
 		"haarcascades/haarcascade_frontalface_alt2.xml", 
 		0, 0, 0 );
 	if(!_cascade) error("Could not load cascade");
-	_tmpImg = cvCreateImage(_imgSize, IPL_DEPTH_8U, 1);
-	_gsImg = cvCreateImage(cvSize(_imgSize.width/(int)_scale, _imgSize.height/(int)_scale), IPL_DEPTH_8U, 1);
-	rect = cvRect(imgSize.width/2-imgSize.width/10, imgSize.height/2-imgSize.height/8, 
-		imgSize.width/5, imgSize.height/4);
+	_tmpImg = cvCreateImage(_frameSize, IPL_DEPTH_8U, 1);
+	_gsImg = cvCreateImage(cvSize(_frameSize.width/(int)_scale, _frameSize.height/(int)_scale), IPL_DEPTH_8U, 1);
+	rect = cvRect(frameSize.width/2-frameSize.width/10, frameSize.height/2-frameSize.height/8, 
+		frameSize.width/5, frameSize.height/4);
 
 	for(int i=0; i<4; ++i)
 		_radius[i] = 30;
@@ -98,24 +98,18 @@ void FaceDetector::Detect(IplImage *img)
 	_UpdateLoc();
 }
 
-void FaceDetector::Draw()
+void FaceDetector::Draw(int windowWidth, int windowHeight)
 {
+	static const double pi = 3.141592653589793238;
 	
+	double scale_x = windowWidth/_frameSize.width;
+	double scale_y = windowHeight/_frameSize.height;
+
 	glColor3f(1,1,0);
 	glLineWidth(2);
-	/*
-	glBegin(GL_LINE_LOOP);
-		glVertex2i(rect.x, rect.y);
-		glVertex2i(rect.x + rect.width, rect.y);
-		glVertex2i(rect.x + rect.width, rect.y + rect.height);
-		glVertex2i(rect.x, rect.y + rect.height);
-	glEnd();
-	*/
-
-	static const double pi = 3.141592653589793238;
 
 	glBegin(GL_LINE_LOOP);
 	for(float i=0; i<2*pi; i+=pi/8)
-		glVertex2f(cos(i)*radius+center.x, sin(i)*radius+center.y);
+		glVertex2f((cos(i)*radius+center.x)*scale_x, (sin(i)*radius+center.y)*scale_y);
 	glEnd();
 }

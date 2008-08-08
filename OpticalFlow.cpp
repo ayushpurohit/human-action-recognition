@@ -2,34 +2,34 @@
 #include <GL/glfw.h>
 #include <iostream>
 
-OpticalFlow::OpticalFlow(CvSize imgSize, CvSize outImageSize) : _tex(outImageSize.width, outImageSize.height)
+OpticalFlow::OpticalFlow(CvSize frameSize, CvSize finalSize) : _tex(finalSize.width, finalSize.height), _lambda(.000005)
 {
-	_outImageSize = outImageSize;
+	_finalSize = finalSize;
 	_velx = 0;
 	_vely = 0;
 	_velz = 0;
-	_tmp = cvCreateImage(imgSize, IPL_DEPTH_32F, 1);
-	_gray1 = cvCreateImage(imgSize, IPL_DEPTH_8U, 1);
-	_gray2 = cvCreateImage(imgSize, IPL_DEPTH_8U, 1);
+	_tmp = cvCreateImage(frameSize, IPL_DEPTH_32F, 1);
+	_gray1 = cvCreateImage(frameSize, IPL_DEPTH_8U, 1);
+	_gray2 = cvCreateImage(frameSize, IPL_DEPTH_8U, 1);
+	_nSum = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
+	_sSum = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
+	_wSum = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
+	_eSum = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
+	_zSum = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
+	_vis = cvCreateImage(_finalSize, IPL_DEPTH_8U, 3);
 	cvZero(_gray1);
 	cvZero(_gray2);
 
-	for(int i=0; i<N_FRAMES_SUM; ++i) 
-	{
-		_nFlow[i] = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
-		_eFlow[i] = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
-		_sFlow[i] = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
-		_wFlow[i] = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
-		_zFlow[i] = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
+	for(int i=0; i<N_FRAMES_SUM; ++i) {
+		_nFlow[i] = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
+		_eFlow[i] = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
+		_sFlow[i] = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
+		_wFlow[i] = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
+		_zFlow[i] = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
 	}
 
-	_nSum = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
-	_sSum = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
-	_wSum = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
-	_eSum = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
-	_zSum = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
-
-	_data = new double[_outImageSize.width * _outImageSize.height * 5];
+	_data = new double[_finalSize.width * _finalSize.height * 5];
+	_criteria = cvTermCriteria(CV_TERMCRIT_ITER | CV_TERMCRIT_EPS, 20, .3);
 }
 
 OpticalFlow::~OpticalFlow(void)
@@ -40,9 +40,14 @@ OpticalFlow::~OpticalFlow(void)
 	cvReleaseImage(&_tmp);
 	cvReleaseImage(&_gray1);
 	cvReleaseImage(&_gray2);
+	cvReleaseImage(&_vis);
+	cvReleaseImage(&_nSum);
+	cvReleaseImage(&_eSum);
+	cvReleaseImage(&_sSum);
+	cvReleaseImage(&_wSum);
+	cvReleaseImage(&_zSum);
 
-	for(int i=0; i<N_FRAMES_SUM; ++i) 
-	{
+	for(int i=0; i<N_FRAMES_SUM; ++i) {
 		cvReleaseImage(&_nFlow[i]);
 		cvReleaseImage(&_eFlow[i]);
 		cvReleaseImage(&_sFlow[i]);
@@ -50,17 +55,12 @@ OpticalFlow::~OpticalFlow(void)
 		cvReleaseImage(&_zFlow[i]);
 	}
 
-	cvReleaseImage(&_nSum);
-	cvReleaseImage(&_eSum);
-	cvReleaseImage(&_sSum);
-	cvReleaseImage(&_wSum);
-	cvReleaseImage(&_zSum);
-
 	delete _data;
 }
 
-void OpticalFlow::Calculate(IplImage *frame)
+void OpticalFlow::Calculate(IplImage *frame, double mspf)
 {
+	// release and re-allocate velocities (necessary because they are resized later)
 	cvReleaseImage(&_velx);
 	cvReleaseImage(&_vely);
 	cvReleaseImage(&_velz);
@@ -69,91 +69,46 @@ void OpticalFlow::Calculate(IplImage *frame)
 	_vely = cvCreateImage(cvGetSize(frame), IPL_DEPTH_32F, 1);
 	_velz = cvCreateImage(cvGetSize(frame), IPL_DEPTH_32F, 1);
 
+	// compute optical flow
 	cvCvtColor( frame, _gray2, CV_BGR2GRAY );
-	cvCalcOpticalFlowLK(_gray1, _gray2, cvSize(3,3), _velx, _vely);
+	cvCalcOpticalFlowHS(_gray1, _gray2, 0, _velx, _vely, _lambda, _criteria);
+	//cvCalcOpticalFlowLK(_gray1, _gray2, cvSize(3,3), _velx, _vely);
 	cvCvtColor( frame, _gray1, CV_BGR2GRAY );
 
-	/*
-	Smooth(_velx);
-	Smooth(_vely);
-	*/
+	// normalize wrt fps and frame size
+	if(mspf<=0) mspf = 0.0001;
+	double mul = 1000000000./mspf; // big num simply prevents really tiny numbers, but is arbitrary
+	cvConvertScale(_velx, _velx, mul/(double)frame->width);
+	cvConvertScale(_vely, _vely, mul/(double)frame->height);
 
-	cvPow(_velx, _velz, 2);
-	cvPow(_vely, _tmp, 2);
+	// compute "zero" flow = sqrt(velx^2+vely^2)
+	cvMul(_velx, _velx, _velz);
+	cvMul(_vely, _vely, _tmp);
 	cvAdd(_tmp, _velz, _velz);
 	cvPow(_velz, _velz, 0.5);
 }
 
-void OpticalFlow::Draw()
+void OpticalFlow::Draw(int x, int y, int w, int h)
 {
-	/*
-	double minx = 65000, miny = 65000, maxz = -65000;
-
 	for(int y=0; y<_velx->height; ++y)
+	{
 		for(int x=0; x<_velx->width; ++x)
 		{
-			double vx = cvGetReal2D(_velx, y, x);
-			double vy = cvGetReal2D(_vely, y, x);
-			double vz = cvGetReal2D(_velz, y, x);
-			if(vx < minx) minx = vx;
-			if(vy < miny) miny = vy;
-			if(vz > maxz) maxz = vz;
+			double vx = cvGetReal2D(_nSum, y, x); // north = red
+			double vy = cvGetReal2D(_eSum, y, x); // east = green
+			double vz = cvGetReal2D(_zSum, y, x); // zero = blue
+			cvSet2D(_vis, y, x, CV_RGB(vx,vy,vz));
 		}
-
-	if(minx<0) minx = -minx;
-	else minx = 0.5;
-	if(miny<0) miny = -miny;
-	else miny = 0.5;
-	*/
-
-	/*
-	glBegin(GL_POINTS);
-		for(int y=0; y<_velx->height; ++y)
-			for(int x=0; x<_velx->width; ++x)
-			{
-				float vx = (float)cvGetReal2D(_velx, y, x);
-				float vy = (float)cvGetReal2D(_vely, y, x);
-				float vz = (float)cvGetReal2D(_velz, y, x);
-				glColor3f((vx+250)/(500),(vy+250)/(500),(vz+250)/(500));
-				glVertex2i(x,y);
-			}
-	glEnd();
-	*/
-	glBegin(GL_POINTS);
-		for(int y=0; y<_velx->height; ++y)
-			for(int x=0; x<_velx->width; ++x)
-			{
-				float vx = (float)cvGetReal2D(_nSum, y, x); // north = red
-				float vy = (float)cvGetReal2D(_eSum, y, x); // east = green
-				float vz = (float)cvGetReal2D(_zSum, y, x); // zero = blue
-				//glColor3f(vx*0.00001,vy*0.00001,vz*0.00001);
-				glColor3f(vx*45.,vy*45.,vz*45.);
-				glVertex2i(x,y);
-			}
-	glEnd();
-}
-
-void OpticalFlow::Draw(int xoffset, int yoffset, int width, int height)
-{
-	unsigned char *data = 0;
-	data = new unsigned char[_velx->width*_velx->height*3];
-
-	
-	for(int y=0; y<_velx->height; ++y)
-		for(int x=0; x<_velx->width; ++x)
-		{
-			data[y*_velx->width*3+x*3] = (unsigned char)128;
-			data[y*_velx->width*3+x*3+1] = (unsigned char)255;
-			data[y*_velx->width*3+x*3+2] = (unsigned char)36;
-		}
-	
-	_tex.Load(data);
-	_tex.Draw(xoffset, yoffset, width, height);
-	delete []data;
+	}
+	_tex.Load((unsigned char*)_vis->imageData, GL_BGR);
+	_tex.Draw(x,y,w,h);
 }
 
 void OpticalFlow::Finalize()
 {
+	// sum the optical flow over N frames
+	// doing it this way avoids having to zero the sums first
+	// but means N must be >= 2
 	cvAdd(_nFlow[0], _nFlow[1], _nSum);
 	cvAdd(_eFlow[0], _eFlow[1], _eSum);
 	cvAdd(_sFlow[0], _sFlow[1], _sSum);
@@ -169,28 +124,12 @@ void OpticalFlow::Finalize()
 		cvAdd(_zFlow[i], _zSum, _zSum);
 	}
 
-	
+	// blur the summed optical flows
 	Smooth(_nSum);
 	Smooth(_eSum);
 	Smooth(_sSum);
 	Smooth(_wSum);
 	Smooth(_zSum);
-	
-	
-	Normalize(_nSum);
-	Normalize(_eSum);
-	Normalize(_sSum);
-	Normalize(_wSum);
-	Normalize(_zSum);
-	
-
-	/*
-	EqualizeHistogram(_nSum);
-	EqualizeHistogram(_eSum);
-	EqualizeHistogram(_sSum);
-	EqualizeHistogram(_wSum);
-	EqualizeHistogram(_zSum);
-	*/
 }
 
 void OpticalFlow::Write(ofstream &fout)
@@ -198,8 +137,6 @@ void OpticalFlow::Write(ofstream &fout)
 	for(int y=0; y<_velx->height; ++y)
 		for(int x=0; x<_velx->width; ++x)
 		{
-			//fout << " " << cvGetReal2D(_zSum, y, x);
-			
 			fout << " " << cvGetReal2D(_nSum, y, x) 
 				 << " " << cvGetReal2D(_eSum, y, x)
 				 << " " << cvGetReal2D(_sSum, y, x)
@@ -215,8 +152,6 @@ double* OpticalFlow::GetData()
 	for(int y=0; y<_velx->height; ++y)
 		for(int x=0; x<_velx->width; ++x)
 		{
-			//_data[_velx->width*y + x] = cvGetReal2D(_zSum, y, x);
-			
 			_data[_velx->width*y*5 + x*5 + 0] = cvGetReal2D(_nSum, y, x);
 			_data[_velx->width*y*5 + x*5 + 1] = cvGetReal2D(_eSum, y, x);
 			_data[_velx->width*y*5 + x*5 + 2] = cvGetReal2D(_sSum, y, x);
@@ -231,13 +166,16 @@ void OpticalFlow::Align(CvPoint center, double radius, IplImage *mask)
 {
 	IplImage *canvasx, *canvasy, *canvasz;
 
+	// ensure face is within frame
 	if(center.x < 0) center.x = 0;
 	if(center.x > _velx->width) center.x = _velx->width;
 	if(center.y < 0) center.y = 0;
 	if(center.y > _velx->height) center.y = _velx->height;
 
-	int canvas_width = max(_velx->width*2, radius * 32);
-	int canvas_height = max(_velx->height*2, radius * 24);
+	// canvas must be at least twice the frame size for centering
+	// we make it larger depending on face size so that it is scale-invariant
+	int canvas_width = max(_velx->width*2, (int)radius*32);
+	int canvas_height = max(_velx->height*2, (int)radius*24);
 
 	canvasx = cvCreateImage(cvSize(canvas_width, canvas_height), IPL_DEPTH_32F, 1);
 	canvasy = cvCreateImage(cvSize(canvas_width, canvas_height), IPL_DEPTH_32F, 1);
@@ -247,6 +185,7 @@ void OpticalFlow::Align(CvPoint center, double radius, IplImage *mask)
 	cvZero(canvasy); 
 	cvZero(canvasz);
 
+	// copy the opical flows to the canvas so that the face is centered
 	cvSetImageROI(canvasx, cvRect(canvasx->width/2-center.x, canvasx->height/2-center.y,
 		_velx->width, _velx->height));
 	cvSetImageROI(canvasy, cvRect(canvasx->width/2-center.x, canvasx->height/2-center.y,
@@ -262,13 +201,15 @@ void OpticalFlow::Align(CvPoint center, double radius, IplImage *mask)
 	cvReleaseImage(&_vely);
 	cvReleaseImage(&_velz);
 
-	cvSetImageROI(canvasx, cvRect(canvasx->width/2-radius*12, canvasx->height/2-radius*9, radius*24, radius*18));
-	cvSetImageROI(canvasy, cvRect(canvasx->width/2-radius*12, canvasx->height/2-radius*9, radius*24, radius*18));
-	cvSetImageROI(canvasz, cvRect(canvasx->width/2-radius*12, canvasx->height/2-radius*9, radius*24, radius*18));
+	// crop the canvas as reasonable distance around the face
+	cvSetImageROI(canvasx, cvRect(canvasx->width/2-(int)radius*12, canvasx->height/2-(int)radius*8, (int)radius*24, (int)radius*18));
+	cvSetImageROI(canvasy, cvRect(canvasx->width/2-(int)radius*12, canvasx->height/2-(int)radius*8, (int)radius*24, (int)radius*18));
+	cvSetImageROI(canvasz, cvRect(canvasx->width/2-(int)radius*12, canvasx->height/2-(int)radius*8, (int)radius*24, (int)radius*18));
 
-	_velx = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
-	_vely = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
-	_velz = cvCreateImage(_outImageSize, IPL_DEPTH_32F, 1);
+	// shrink the output image to create larger optical flow bins and so that there is less data to process
+	_velx = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
+	_vely = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
+	_velz = cvCreateImage(_finalSize, IPL_DEPTH_32F, 1);
 
 	cvResize(canvasx, _velx, CV_GAUSSIAN);
 	cvResize(canvasy, _vely, CV_GAUSSIAN);
@@ -281,55 +222,9 @@ void OpticalFlow::Align(CvPoint center, double radius, IplImage *mask)
 
 void OpticalFlow::Normalize(IplImage *image)
 {
-	
-	
-	
-	//const double eps = 0.00000001;
-
 	double norm = cvNorm(image, NULL, CV_L2);
-	//cout << norm << endl;
-	//if(norm < eps) norm = eps;
-	norm += 0.0005;
-
-	for(int row=0; row<image->height; ++row)
-		for(int col=0; col<image->width; ++col)
-			cvSetReal2D(image, row, col, cvGetReal2D(image, row, col) / norm); // LOG?!
-	
-	
-	/*
-	static double lastFrameTime = glfwGetTime();
-	double ratio = (glfwGetTime() - lastFrameTime)/66.66; // scale wrt time
-	lastFrameTime = glfwGetTime();
-
-	for(int row=0; row<image->height; ++row)
-		for(int col=0; col<image->width; ++col)
-			cvSetReal2D(image, row, col, cvGetReal2D(image, row, col) / ratio);
-	*/
-}
-
-void OpticalFlow::EqualizeHistogram(IplImage *image)
-{
-	double min, max;
-	cvMinMaxLoc(image, &min, &max);
-	for(int i=0; i<image->width*image->height; ++i)
-	{
-		image->imageData[i] = (image->imageData[i]-min)/max*10000;
-	}
-
-
-	/*
-	IplImage *u8 = cvCreateImage(cvGetSize(image), IPL_DEPTH_8U, 1);
-	double min, max;
-	const double eps = 0.000001;
-	cvMinMaxLoc(image, &min, &max);
-	if(max<eps) max = eps;
-	for(int i=0; i<image->width*image->height; ++i)
-		u8->imageData[i] = (image->imageData[i]-min)/max*255;
-	cvEqualizeHist(u8, u8);
-	for(int i=0; i<image->width*image->height; ++i)
-		image->imageData[i] = u8->imageData[i];
-	cvReleaseImage(&u8);
-	*/
+	norm += 0.0005; // avoid division by zero
+	cvConvertScale(image, image, 1./norm); // TODO: would taking the log help prevent very small numbers?
 }
 
 void OpticalFlow::Smooth(IplImage *image)

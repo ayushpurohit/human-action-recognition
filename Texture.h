@@ -8,7 +8,7 @@ public:
 	~Texture(void);
 	void Load(unsigned char* data, GLenum format = GL_BGR);
 	void Draw(int x = 0, int y = 0, int w = 0, int h = 0);
-private:
+public:
 	unsigned _NextPow2(unsigned n);
 	GLuint _texID;
 	int _w, _h;

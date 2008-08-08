@@ -6,11 +6,11 @@
 class FaceDetector
 {
 public:
-	FaceDetector(CvSize imgSize, double scale_image = 1.0, 
+	FaceDetector(CvSize frameSize, double scale_image = 1.0, 
 		double scale_factor = 1.1, int min_neighbours = 3, int flags = 0 );
 	~FaceDetector(void);
 	void Detect(IplImage *img);
-	void Draw();
+	void Draw(int windowWidth, int windowHeight);
 
 	CvRect rect;
 	CvPoint center;
@@ -19,7 +19,7 @@ private:
 	CvMemStorage* _storage;
 	CvHaarClassifierCascade* _cascade;
 	bool _calcHist;
-	CvSize _imgSize;
+	CvSize _frameSize;
 	IplImage *_tmpImg, *_gsImg;
 	const double _scale;
 	CamShift _cs;
