@@ -1,6 +1,6 @@
 #include "CamShift.h"
 
-CamShift::CamShift(CvSize imgSize)
+CamShift::CamShift(CvSize frameSize)
 {
 	_backproject_mode = 0;
 	_hdims = 16;
@@ -11,10 +11,10 @@ CamShift::CamShift(CvSize imgSize)
 	_vmax = 256;
 	_smin = 30;
 
-	_hsv = cvCreateImage( imgSize, IPL_DEPTH_8U, 3 );
-	_hue = cvCreateImage( imgSize, IPL_DEPTH_8U, 1 );
-	_mask = cvCreateImage( imgSize, IPL_DEPTH_8U, 1 );
-	_backproject = cvCreateImage( imgSize, IPL_DEPTH_8U, 1 );
+	_hsv = cvCreateImage( frameSize, IPL_DEPTH_8U, 3 );
+	_hue = cvCreateImage( frameSize, IPL_DEPTH_8U, 1 );
+	_mask = cvCreateImage( frameSize, IPL_DEPTH_8U, 1 );
+	_backproject = cvCreateImage( frameSize, IPL_DEPTH_8U, 1 );
 	_hist = cvCreateHist( 1, &_hdims, CV_HIST_ARRAY, &_hranges, 1 );
 }
 

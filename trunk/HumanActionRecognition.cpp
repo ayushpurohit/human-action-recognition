@@ -8,6 +8,8 @@
  *		Normalize based on frame rate or something??? And RESOLUTION
  *	- Draw optical flow to texture and stretch?
  *  - Use meanshift whenever possible, only use face detection to re-align
+ *  - Set first frame as background (person must *NOT* be in the image!!) then take absolute difference, 
+ *		threshold and mask! much faster too
  */
 #include "stdafx.h"
 #include "FaceDetector.h"
@@ -17,6 +19,11 @@
 #include "glfont2/glfont2.h"
 
 using namespace glfont;
+
+void GLFWCALL windowResize(int width, int height)
+{
+	glViewport(0, 0, width, height);
+}
 
 void glInit(int width, int height)
 {
@@ -34,6 +41,7 @@ void glInit(int width, int height)
 	gluOrtho2D(0, width, height, 0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	glfwSetWindowSizeCallback(windowResize);
 }
 
 void DrawIplImage(IplImage *image)
@@ -72,7 +80,7 @@ int RealTimeTest()
 	fgMask = cvCreateImage(cvSize(width, height), IPL_DEPTH_8U, 1);
 
 	// initialize opengl/glfw
-	glInit(320, 240);
+	glInit(80, 60);
 
 	// initialize face detector & optical flow
 	FaceDetector fd(cvSize(width,height), 1.5, 1.2, 2, CV_HAAR_DO_CANNY_PRUNING);
@@ -91,7 +99,7 @@ int RealTimeTest()
 	vi.getPixels(device1, (unsigned char*)frame->imageData, false, true);
 	bg_model = cvCreateGaussianBGModel(frame, &gParams);
 
-	Classifier classifier("shyp/friends-bg4.5.xml");//bowl-80x60-small_blur-3.xml
+	Classifier classifier("shyp/bowl-80x60-small_blur-2.xml");
 
 	GLFont font;
 	if(!font.Create("glfont2/04b_03.glf",1))
@@ -120,7 +128,7 @@ int RealTimeTest()
 			
 
 			// compute optical flow
-			of.Calculate(frame);
+			//of.Calculate(frame);
 
 			// update foreground mask
 			//cvUpdateBGStatModel(frame, bg_model);
@@ -138,8 +146,8 @@ int RealTimeTest()
 			// draw
 			glClear(GL_COLOR_BUFFER_BIT);
 			
-			DrawIplImage(frame);
-			fd.Draw();
+			//DrawIplImage(frame);
+			//fd.Draw();
 			
 			int i = 0;
 			for(map<string, double>::const_iterator itr = classifier.votes.begin(); 
@@ -161,7 +169,7 @@ int RealTimeTest()
 				font.End();
 			}
 			
-			//of.Draw();
+			of.Draw();
 			glfwSwapBuffers();
 			
 			++frameNum;
@@ -176,168 +184,190 @@ int RealTimeTest()
 	return EXIT_SUCCESS;
 }
 
+int GetNumFrames(CvCapture *capture)
+{
+	double posFrames, numFrames;
+
+	posFrames = cvGetCaptureProperty( capture, CV_CAP_PROP_POS_FRAMES );
+	cvSetCaptureProperty( capture, CV_CAP_PROP_POS_AVI_RATIO, 1. );			
+	numFrames = cvGetCaptureProperty( capture, CV_CAP_PROP_POS_FRAMES );	
+	cvSetCaptureProperty( capture, CV_CAP_PROP_POS_FRAMES, posFrames );		
+
+	return (int)numFrames;
+}
+
+double GetFrameRate(CvCapture *capture) {
+	return cvGetCaptureProperty(capture, CV_CAP_PROP_FPS);
+}
+
+int GetFrameWidth(CvCapture *capture) {
+	return (int)cvGetCaptureProperty(capture, CV_CAP_PROP_FRAME_WIDTH);
+}
+
+int GetFrameHeight(CvCapture *capture) {
+	return (int)cvGetCaptureProperty(capture, CV_CAP_PROP_FRAME_HEIGHT);
+}
+
 int WriteData(vector<string> files, ofstream &fout)
 {
 	CvCapture *capture = 0;
-	IplImage *frame, *fgMask;
 	int numFrames;
-	int width = 320, height = 240;
-	CvBGStatModel *bg_model;
-	CvGaussBGStatModelParams gParams;
-	string label;
-	double t0 = 0, t1;
-	int fpsFrames;
-	char windowTitle[80];
-	
-	// create images
-	frame = cvCreateImage(cvSize(width, height), IPL_DEPTH_8U, 3);
-	fgMask = cvCreateImage(cvSize(width, height), IPL_DEPTH_8U, 1);
-
-	// initialize face detector & optical flow
-	FaceDetector fd(cvSize(width,height), 1.0, 1.1, 3, 0);
-	OpticalFlow of(cvSize(width,height), cvSize(80,60));
-
-	// initialize background subtraction
-	gParams.win_size = 2;			// default: 2
-	gParams.n_gauss = 5;			// default: 5
-	gParams.bg_threshold = 0.7;		// default: 0.7
-	gParams.std_threshold = 5.5;	// default: 2.5
-	gParams.minArea = 15;			// default: 15
-	gParams.weight_init = 0.05;		// default: 0.05
-	gParams.variance_init = 30;		// default: 30
-
-	// initialize opengl/glfw
-	Texture tex(320,240);
-	glInit(80, 60);
+	IplImage *frame, *frameCopy;
+	int frameWidth, frameHeight;
+	const int windowWidth = 640, windowHeight = 480;
+	glInit(windowWidth,windowHeight);
+	double mspf, frameRate;
 
 	for(int i=0; i<(int)files.size(); ++i)
 	{
+		// get label
 		string filename = files[i].substr(files[i].find_last_of("/")+1);
-		label = filename.substr(0,filename.find_first_of("0123456789."));
+		string label = filename.substr(0,filename.find_first_of("0123456789."));
 
-		cout << "Processing video " << i+1 << " of " << files.size() << " (" << filename << ")" << endl;
+		// open video and get parameters
 		capture = cvCaptureFromFile(files[i].c_str());
+		if(!capture) error("Could not open video");
+		numFrames = GetNumFrames(capture);
+		frameWidth = GetFrameWidth(capture);
+		frameHeight = GetFrameHeight(capture);
+		frameRate = GetFrameRate(capture);
+		mspf = 1000./frameRate;
 
-		cvSetCaptureProperty( capture, CV_CAP_PROP_POS_AVI_RATIO, 1. );
-		numFrames = (int) cvGetCaptureProperty( capture, CV_CAP_PROP_POS_FRAMES );
-		cvSetCaptureProperty( capture, CV_CAP_PROP_POS_FRAMES, 0. );
-
+		// initialize other objects
 		frame = cvQueryFrame(capture);
-		cvFlip(frame);
-		bg_model = cvCreateGaussianBGModel(frame, &gParams);
+		Texture tex(frameWidth, frameHeight);
+		frameCopy = cvCreateImage(cvGetSize(frame), frame->depth, frame->nChannels);
+		FaceDetector fd(cvGetSize(frame));
+		OpticalFlow of(cvGetSize(frame));
 
-		for(int j=1; j<numFrames; ++j)
+		cout << "video " << i+1 << " of " << (int)files.size() << " : " << filename << " : " 
+			<< frameWidth << "x" << frameHeight << "x" << numFrames << " @ " << frameRate << " FPS" << endl;
+
+		for(int j=0; j<numFrames; ++j)
 		{
-			if(j>3)
-			{
-				if(glfwGetKey('N')==GLFW_PRESS) break;
-				if(glfwGetKey('B')==GLFW_PRESS && i>0) {
-					i-=2; break;
-				}
-			}
-
-			// compute fps
-			t1 = glfwGetTime();
-			if(t1 - t0 > 1) {
-				sprintf_s(windowTitle, "%s - FPS: %.2f", label.c_str(), (double)fpsFrames/(t1-t0));
-				glfwSetWindowTitle(windowTitle);
-				fpsFrames = 0;
-				t0 = glfwGetTime();
-			}
-			++fpsFrames;
+			// copy and flip the frame (opencv returns it upside-down, and its glitchy unless copied)
+			cvFlip(frame, frameCopy);
 			
-			// grab the next frame
-			frame = cvQueryFrame(capture);
-			cvFlip(frame);
-
-			// detect & track face
-			fd.Detect(frame);
-
-			// create foreground mask
-			cvUpdateBGStatModel(frame, bg_model); 
-			cvSmooth(bg_model->foreground, fgMask, CV_BLUR, 7, 7);
-
-			// compute optical flow
-			of.Calculate(frame);
-			of.Align(fd.center, fd.radius, fgMask);
+			// find face
+			fd.Detect(frameCopy);
+			
+			// calc optical flow
+			of.Calculate(frameCopy, mspf);
+			of.Align(fd.center, fd.radius);
 			of.Split();
-
 			of.Finalize();
-			
-			if(j >= 20) // wait for background subtraction to settle, and for frames to sum
-			{				
+
+			// write data (wait for optical flow to sum)
+			if(j>15) {
 				fout << label;
 				of.Write(fout);
+			}
 
-				cout << "  Writing frame " << j+1 << " of " << numFrames << endl;
-			}
-			else {
-				cout << "  Processing frame " << j+1 << " of " << numFrames << endl;
-			}
-			
-			glClear(GL_COLOR_BUFFER_BIT);
-			of.Draw();
-			
-			//tex.Draw(0,0,80,60);
-			//DrawIplImage(frame);
-			//fd.Draw();
+			// draw
+			tex.Load((unsigned char*)frameCopy->imageData, GL_BGR);
+			tex.Draw(0,0,windowWidth,windowHeight);
+			fd.Draw(windowWidth, windowHeight);
+			of.Draw(10,10,160,120);
 			glfwSwapBuffers();
+
+			// grab the next frame (overwrites old frame)
+			cvQueryFrame(capture);
 		}
 
-		cvReleaseBGStatModel(&bg_model);
+		cvReleaseImage(&frameCopy);
 		cvReleaseCapture(&capture);
 	}
-
-	glfwTerminate();
-	cvReleaseImage(&fgMask);
-
 	return EXIT_SUCCESS;
 }
 
-void Train()
+void WriteTrainingDataSet()
 {
 	vector<string> files;
 	ofstream fout;
 	string root;
 	
-	// train data
-	fout.open("data/friends-bg5.5b");
-	root = "C:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/";
-	files.push_back(root+"mark/wave.avi");
-	files.push_back(root+"mark/wave-left.avi");
-	files.push_back(root+"mark/wave-right.avi");
-	files.push_back(root+"mark/punch-left.avi");
-	files.push_back(root+"mark/punch-right.avi");
-	files.push_back(root+"mark/chicken.avi");
-	files.push_back(root+"andy/wave.avi");
-	files.push_back(root+"andy/wave-left.avi");
-	files.push_back(root+"andy/wave-right.avi");
-	files.push_back(root+"andy/punch-left.avi");
-	files.push_back(root+"andy/punch-right.avi");
-	files.push_back(root+"andy/chicken.avi");
-	files.push_back(root+"andy/stand.avi");
-	files.push_back(root+"andrew/wave.avi");
-	files.push_back(root+"andrew/wave-left.avi");
-	files.push_back(root+"andrew/wave-right.avi");
-	files.push_back(root+"andrew/punch-left.avi");
-	files.push_back(root+"andrew/punch-right.avi");
-	//files.push_back(root+"andrew/chicken.avi"); // not enough movement?
-	files.push_back(root+"andrew/stand.avi");
-	files.push_back(root+"andrew/seizure.avi");
-	files.push_back(root+"andrew/monkey.avi");
-	files.push_back(root+"nick/wave.avi");
-	files.push_back(root+"nick/wave-left.avi");
-	files.push_back(root+"nick/wave-right.avi");
-	files.push_back(root+"nick/punch-left.avi");
-	files.push_back(root+"nick/punch-right.avi");
-	files.push_back(root+"nick/chicken.avi");
-	files.push_back(root+"nick/stand.avi");
+	root = "D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/nick/";
+	files.push_back(root+"punch-right.avi");
+	files.push_back(root+"punch-left.avi");
+	files.push_back(root+"idle.avi");
+	files.push_back(root+"waves.avi");
+	files.push_back(root+"wave-right.avi");
+	files.push_back(root+"wave-left.avi");
+	files.push_back(root+"chicken.avi");
+
+	root = "D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/mark/";
+	files.push_back(root+"punch-right.avi");
+	files.push_back(root+"punch-left.avi");
+	files.push_back(root+"clap.avi");
+	files.push_back(root+"waves.avi");
+	files.push_back(root+"wave-right.avi");
+	files.push_back(root+"wave-left.avi");
+	files.push_back(root+"chicken.avi");
+
+	root = "D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/andy/";
+	files.push_back(root+"punch-right.avi");
+	files.push_back(root+"idle.avi");
+	files.push_back(root+"waves.avi");
+	files.push_back(root+"wave-right.avi");
+	files.push_back(root+"chicken.avi");
+
+	root = "D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/andrew/";
+	files.push_back(root+"punch-left.avi");
+	files.push_back(root+"punch-right.avi");
+	files.push_back(root+"idle.avi");
+	files.push_back(root+"waves.avi");
+	files.push_back(root+"wave-left.avi");
+	files.push_back(root+"wave-right.avi");
+	files.push_back(root+"chicken.avi");
+
+	root = "D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/train/mohammed/";
+	files.push_back(root+"punch-left1.avi");
+	files.push_back(root+"punch-right1.avi");
+	files.push_back(root+"wave-left1.avi");
+	files.push_back(root+"wave-right1.avi");
+	files.push_back(root+"waves1.avi");
+	files.push_back(root+"chicken1.avi");
+	files.push_back(root+"idle2.avi");
+
+	fout.open("data/5ppl");
+	WriteData(files, fout);
+	fout.close();
+}
+
+void WriteTestDataSet()
+{
+	vector<string> files;
+	ofstream fout;
+	string root;
+
+	root = "D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/test/bronson/";
+	files.push_back(root+"punch-right.avi");
+	files.push_back(root+"punch-left.avi");
+	files.push_back(root+"idle.avi");
+	files.push_back(root+"waves.avi");
+	files.push_back(root+"wave-right.avi");
+	files.push_back(root+"wave-left.avi");
+	files.push_back(root+"chicken.avi");
+	files.push_back(root+"clap.avi");
+
+	root = "D:/Documents and Settings/Mark/My Documents/Visual Studio 2008/Projects/DATA/test/kahne/";
+	files.push_back(root+"punch-right.avi");
+	files.push_back(root+"punch-left.avi");
+	files.push_back(root+"clap.avi");
+	files.push_back(root+"waves.avi");
+	files.push_back(root+"wave-right.avi");
+	files.push_back(root+"wave-left.avi");
+	files.push_back(root+"chicken.avi");
+	files.push_back(root+"idle.avi");
+
+	fout.open("data/test");
 	WriteData(files, fout);
 	fout.close();
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//Train();
-	RealTimeTest();	
+	//WriteTrainingDataSet();
+	WriteTestDataSet();
+	//RealTimeTest();	
 }
