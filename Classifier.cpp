@@ -4,6 +4,9 @@
 
 Classifier::Classifier(const char* shypFile)
 {
+	// this is a really hacky way of loading the xml file, using bits of code
+	// stolen from multiboost. but it works...
+
 	using namespace MultiBoost;
 	using namespace nor_utils;
 
@@ -79,12 +82,12 @@ string Classifier::Classify(const double *data)
 	votes.clear();
 	for(int i=0; i<(int)_weakHyps.size(); ++i)
 	{
-		short sign = data[_weakHyps[i].column] > _weakHyps[i].threshold ? 1 : -1;
 
 		for(map<string, short>::const_iterator itr = _weakHyps[i].parities.begin(); 
 			itr != _weakHyps[i].parities.end(); ++itr) 
 		{
-			votes[itr->first] += (double)sign * (double)itr->second * (double)_weakHyps[i].alpha;
+			short y = itr->second * data[_weakHyps[i].column] > itr->second * _weakHyps[i].threshold ? 1 : 0;
+			votes[itr->first] += _weakHyps[i].alpha * (double)y;
 		}
 	}
 

@@ -43,7 +43,7 @@ GLFont::~GLFont ()
 	Destroy();
 }
 //*******************************************************************
-bool GLFont::Create (const char *file_name, int tex)
+bool GLFont::Create (const char *file_name)
 {
 	ifstream input;
 	int num_chars, num_tex_bytes;
@@ -59,7 +59,8 @@ bool GLFont::Create (const char *file_name, int tex)
 
 	//Read the header from file
 	input.read((char *)&header, sizeof(header));
-	header.tex = tex;
+
+	glGenTextures(1, (GLuint*)&header.tex);
 
 	//Allocate space for character array
 	num_chars = header.end_char - header.start_char + 1;
@@ -76,7 +77,7 @@ bool GLFont::Create (const char *file_name, int tex)
 	input.read(tex_bytes, num_tex_bytes);
 
 	//Create OpenGL texture
-	glBindTexture(GL_TEXTURE_2D, tex);  
+	glBindTexture(GL_TEXTURE_2D, header.tex);  
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -96,13 +97,14 @@ bool GLFont::Create (const char *file_name, int tex)
 	return true;
 }
 //*******************************************************************
-bool GLFont::Create (const std::string &file_name, int tex)
+bool GLFont::Create (const std::string &file_name)
 {
-	return Create(file_name.c_str(), tex);
+	return Create(file_name.c_str());
 }
 //*******************************************************************
 void GLFont::Destroy (void)
 {
+	glDeleteTextures(1, (GLuint*)&header.tex);
 	//Delete the character array if necessary
 	if (header.chars)
 	{

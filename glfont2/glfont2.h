@@ -51,8 +51,8 @@ public:
 public:
 
 	//Creates the glFont
-	bool Create (const char *file_name, int tex);
-	bool Create (const std::string &file_name, int tex);
+	bool Create (const char *file_name);
+	bool Create (const std::string &file_name);
 
 	//Destroys the glFont
 	void Destroy (void);
