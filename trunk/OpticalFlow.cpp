@@ -58,7 +58,7 @@ OpticalFlow::~OpticalFlow(void)
 	delete _data;
 }
 
-void OpticalFlow::Calculate(IplImage *frame, double mspf)
+void OpticalFlow::Calculate(IplImage *frame, double spf)
 {
 	// release and re-allocate velocities (necessary because they are resized later)
 	cvReleaseImage(&_velx);
@@ -76,8 +76,8 @@ void OpticalFlow::Calculate(IplImage *frame, double mspf)
 	cvCvtColor( frame, _gray1, CV_BGR2GRAY );
 
 	// normalize wrt fps and frame size
-	if(mspf<=0) mspf = 0.0001;
-	double mul = 1000000000./mspf; // big num simply prevents really tiny numbers, but is arbitrary
+	if(spf<=0) spf = 0.0001;
+	double mul = 1000000./spf; // big num simply prevents really tiny numbers, but is arbitrary
 	cvConvertScale(_velx, _velx, mul/(double)frame->width);
 	cvConvertScale(_vely, _vely, mul/(double)frame->height);
 
@@ -230,7 +230,7 @@ void OpticalFlow::Normalize(IplImage *image)
 void OpticalFlow::Smooth(IplImage *image)
 {
 	int type = CV_GAUSSIAN;
-	int size = 5;
+	int size = 3;
 
 	cvSmooth(image, image, type, size, size);
 }

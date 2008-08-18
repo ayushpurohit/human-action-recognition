@@ -46,7 +46,7 @@ void FaceDetector::_UpdateLoc()
 	center.x = rect.x+rect.width/2;
 	center.y = rect.y+rect.height/2;
 
-	// assert parameters are reasonable
+	// ensure parameters are reasonable
 	if(center.x<0)center.x=0;												// your face must be in view
 	if(center.x>_tmpImg->width)center.x=_tmpImg->width;
 	if(center.y<0)center.y=0;
@@ -57,7 +57,7 @@ void FaceDetector::_UpdateLoc()
 		&& count < 3														// and the face detector is not stuck
 		&& (_Dist(center.x-lastCenter.x,center.y-lastCenter.y)>radius*2		// and (your face teleported
 		|| abs(radius-lastRadius)>lastRadius/1.5)) {						// or your face exploded)
-		center = lastCenter;
+		center = lastCenter;												// then don't update loc (prevents short frame glitchs)
 		radius = lastRadius;
 		++count;
 	} else count = 0;
